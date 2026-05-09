@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,6 +7,8 @@ namespace Matrix
 {
     public partial class MainWindow : Window
     {
+        private const int MaxMatrixSize = 7;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -189,14 +191,14 @@ namespace Matrix
             string name, out int rows, out int cols)
         {
             rows = 0; cols = 0;
-            if (!int.TryParse(rowsText, out rows) || rows < 1 || rows > 10)
+            if (!int.TryParse(rowsText, out rows) || rows < 1 || rows > MaxMatrixSize)
             {
-                ShowError($"{name}: рядки повинні бути від 1 до 10.");
+                ShowError($"{name}: рядки повинні бути від 1 до {MaxMatrixSize}.");
                 return false;
             }
-            if (!int.TryParse(colsText, out cols) || cols < 1 || cols > 10)
+            if (!int.TryParse(colsText, out cols) || cols < 1 || cols > MaxMatrixSize)
             {
-                ShowError($"{name}: стовпці повинні бути від 1 до 10.");
+                ShowError($"{name}: стовпці повинні бути від 1 до {MaxMatrixSize}.");
                 return false;
             }
             return true;
